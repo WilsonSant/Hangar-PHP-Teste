@@ -1,0 +1,18 @@
+services:
+  apache:
+    build:
+      context: .
+      dockerfile: DockerFile
+    volumes:
+      - ./app:/var/www/html  
+    ports:
+      - "80:80"
+  mariadb:
+    image: mariadb:10.3
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: teste
+    volumes:
+      - ./mariadb:/var/lib/mysql
+    ports:
+      - "3306:3306"
